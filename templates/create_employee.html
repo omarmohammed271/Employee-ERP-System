@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <h1>Employee Data</h1>
+    
+    <form  method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="mb-3">
+
+                <input type="text" class="form-control"  placeholder="Enter Employee Name" Required name="name">
+            </div>
+            <div class="mb-3">
+
+                <input type="text" class="form-control"  placeholder="Enter Employee age" Required name="age">
+            </div>
+            <div class="mb-3">
+
+                <input type="text" class="form-control"  placeholder="Enter Employee Salary" Required name="salary">
+            </div>
+        
+            <div class="mb-3">
+
+                <button type="submit" class="btn-primary">Create</button>
+            </div>
+    
+
+        </div>
+    </form>
+    
+
+  </div>
+{% endblock body %}

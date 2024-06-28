@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Employee
 # Create your views here.
@@ -25,3 +25,20 @@ def employee_detail(request,id):
         'employee':employee,
     }
     return render(request,'employee_detail.html',context)
+
+def create_employee(request):
+    if request.method=='POST':
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        salary = request.POST.get('salary')
+        employe = Employee.objects.create(
+            name = name, age=age,salary=salary,
+        )
+        # employee = Employee() #OOP
+        # employee.name=name
+        # employee.age = age
+        # employee.salary = salary
+        # employee.save()
+        return redirect('list_employees')
+
+    return render(request,'create_employee.html')
