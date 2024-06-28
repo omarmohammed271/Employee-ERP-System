@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from .models import Employee
 # Create your views here.
@@ -15,11 +15,12 @@ def list_employees(request):
 
 #R get---one employee
 def employee_detail(request,id):
-    try:
-        employee = Employee.objects.get(id=id)
-    ## SQL Injection
-    except:
-        return render(request,'404.html')
+    # try:
+    #     employee = Employee.objects.get(id=id)
+    # ## SQL Injection
+    # except:
+    #     return render(request,'404.html')
+    employee = get_object_or_404(Employee,id=id)
     context = {
         'employee':employee,
     }
