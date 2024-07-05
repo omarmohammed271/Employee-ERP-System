@@ -12,7 +12,7 @@
 
     </div>
     <div class="row">
-      <a href="{% url "update_employee" %}" type="button" class="btn btn-primary mt-3">Update Employee</a>
+      <a href="{% url "update_employee" employee.id %}" type="button" class="btn btn-primary mt-3">Update Employee</a>
       <a href="{% url "delete_employee" employee.id %}" type="button" class="btn btn-danger mt-3">Delete Employee</a>
     </div>
 

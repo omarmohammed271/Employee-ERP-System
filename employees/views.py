@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
+from django.urls import reverse
 from .models import Employee
 from .forms import EmployeeForm
 # Create your views here.
@@ -48,13 +49,20 @@ def delete_employee(request,emp_id):
     employee = get_object_or_404(Employee,id=emp_id)
     employee.delete()
     return redirect("list_employees")
+    
 
-def update_employee(request):
+def update_employee(request,emp_id):
+    employee = Employee.objects.get(id=emp_id)
+    if request.method=="POST":
+        form = EmployeeForm(request.POST,instance=employee)
+        if form.is_valid():
+            form.save()
+            return redirect('employee_detail',id=employee.id)
 
-    form = EmployeeForm()
+    form = EmployeeForm(instance=employee)
 
     context = {
-        'form':form
+        'form':form,
     }
     return render(request,'update_employee.html',context)
 
