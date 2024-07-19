@@ -25,3 +25,9 @@ API
 # 3 Mixins
 # 4 generics
 # 5 Viewsets
+
+
+
+
+# e-commerce     Scale AWS Clone App  models
+100 %
